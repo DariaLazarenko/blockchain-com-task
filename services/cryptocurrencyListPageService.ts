@@ -38,7 +38,6 @@ export async function getCryptocurrencyList(): Promise<CryptocurrencyShort[]> {
     }
 
     const data: CryptocurrencyListApiResponse = await response.json();
-    console.log(data);
 
     return Object.entries(data).map(([id, values]) => ({
       id,
