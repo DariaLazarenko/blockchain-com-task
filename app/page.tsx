@@ -1,6 +1,7 @@
 import { CryptocurrencyShort } from "@/models/cryptocurrency";
 import EmptyState from "@/components/EmptyState";
 import { getCryptocurrencyList } from "@/services/cryptocurrencyListPageService";
+import { NumberFormatter } from "@/utils/numberFormatter";
 
 export default async function CryptocurrencyListPage() {
   const cryptoData = await getCryptocurrencyList();
@@ -32,7 +33,10 @@ export default async function CryptocurrencyListPage() {
                     {crypto.name}
                   </td>
                   <td className="whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4">
-                    ${crypto.usdPrice.toFixed(2)}
+                    $
+                    {NumberFormatter.formatToSignificantDecimals(
+                      crypto.usdPrice,
+                    )}
                   </td>
                   <td
                     className={`whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4 ${
