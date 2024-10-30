@@ -19,13 +19,12 @@ export async function generateMetadata({ params }: Props) {
     };
   }
 
+  const title = `${coinDetails.name} Details`;
+  const description = `Detailed price information`;
+
   return {
-    title: `${coinDetails.name} Price and Details`,
-    description: `Current ${
-      coinDetails.name
-    } price: $${coinDetails.usdPrice.toFixed(
-      2,
-    )} | 24h change: ${coinDetails.usd24hChange.toFixed(2)}%`,
+    title: title,
+    description: description,
     keywords: [
       `${coinDetails.name}`,
       "cryptocurrency",
@@ -33,12 +32,8 @@ export async function generateMetadata({ params }: Props) {
       "crypto details",
     ],
     openGraph: {
-      title: `${coinDetails.name} Price and Details`,
-      description: `Current ${
-        coinDetails.name
-      } price: $${coinDetails.usdPrice.toFixed(
-        2,
-      )} | 24h change: ${coinDetails.usd24hChange.toFixed(2)}%`,
+      title: title,
+      description: description,
       type: "website",
     },
   };
