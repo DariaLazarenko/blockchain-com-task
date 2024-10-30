@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blockchain.con frontend take-home test
 
-## Getting Started
+This Next.js application allows you to view the predefined list of cryptocurrencies with key data like price and 24h price change. You can also navigate to each coin's page to view more details like 24h high and low prices, which are fetched and updated in real time from CoinGecko API.
 
-First, run the development server:
+The project is deployed on Vercel and you can access it here: [blockchain-com-task.vercel.app](https://blockchain-com-task.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to run a project locally
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can do it by following these steps:
+1. Clone the project from this GitHub repo.
+2. Create `.env.local` file using `.env.template` as a template by running this command: 
+    ```bash
+    cp .env.template .env.local
+    ```
+3. Make sure that you have a valid CoinGecko API key. If you don't have one, here is a detailed guide on how to create it: [How to create Demo API key](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key)
+4. Insert this API key as a value for `COINGECKO_API_KEY` in created earlier `.env.local` file
+5. Run this command to install all necessary dependencies:
+    ```bash
+    npm install
+    ```
+6. After all the dependencies have successfully installed run this command to build and run this application:
+    ```bash
+    npm run build && npm start
+    ```
+7. Finally, open [http://localhost:3000](http://localhost:3000) with your browser to open the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## App overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The App has two main pages: static coin list page and dynamic coin details page for specific coins. I have used CoinGecko API for data fetching with a demo API key.
 
-## Learn More
+### Coin list page
 
-To learn more about Next.js, take a look at the following resources:
+For the coin list page, I've used SSR to prefetch the data on the server. The fetch request to CoinGecko is revalidated every 60 seconds to ensure data accuracy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Coin details page
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For the coin details page, I have also used SSR to prefetch initial data. The page is regenerated on each reload because it is a dynamic route.
 
-## Deploy on Vercel
+Even thought it wasn't stated in the requirements for the task, I decided to add the feature of auto coin data update every 60 seconds. To achieve this, I used a client component for live data updates with `UseEffect` React hook. I think it is quite useful for monitoring coin prices.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Code structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+I have implemented a simple code structure that organises core components, models, etc. into dedicated folders which suits small projects like this one. 
+This structure provides modularity, making the codebase organised and scalable.
+
+### Design
+
+For the app design, I used a Tailwind CSS library and mobile-first approach. This helps to keep the app responsive for all types of devices.
+
+### Tests
+
+Additionally, I added unit tests for key functions. You can find them in `/tests` directory. To run tests use this command: `npm test`.
