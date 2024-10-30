@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
+// New page will be rendered each time user loads a page because it is a dymanic route
 export default async function CoinDetailsPage({ params }: Props) {
-  // New data will be fetched each time user loads a page because it is a dymanic route
   const coinDetails: Coin = await getCoinDetails(params.id);
 
   if (!coinDetails) {
