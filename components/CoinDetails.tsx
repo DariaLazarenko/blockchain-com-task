@@ -17,15 +17,12 @@ interface Props {
 
 export default function CoinDetails({ coinId, initialData }: Props) {
   const [data, setData] = useState(initialData);
-  const [refetching, setRefetching] = useState(false);
   const [timeUntilRefetch, setTimeUntilRefetch] = useState(TIMEOUT_S);
 
   useEffect(() => {
     const fetchInterval = setInterval(async () => {
-      setRefetching(true);
       const response = await getCoinDetails(coinId);
       setData(response);
-      setRefetching(false);
       setTimeUntilRefetch(TIMEOUT_S);
     }, TIMEOUT_MS);
 
