@@ -16,7 +16,7 @@ export default function Error({
   return (
     <div className="h-full flex flex-col justify-center items-center p-4">
       <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-red-500 mb-4">
-        Something went wrong!
+        Something went wrong: {error.message}
       </h2>
       <button
         onClick={() => reset()}
