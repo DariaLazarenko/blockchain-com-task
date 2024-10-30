@@ -7,13 +7,15 @@ export default function CoinDetailsPageLayout({
 }>) {
   return (
     <div className="h-full flex flex-col">
-      <Link
-        href={`/`}
-        className="flex p-4 underline"
-        aria-label="Go back to main page"
-      >
-        Go Back
-      </Link>
+      <div className="p-4">
+        <Link
+          href={`/`}
+          className=" underline"
+          aria-label="Go back to main page"
+        >
+          Go Back
+        </Link>
+      </div>
       {children}
     </div>
   );
