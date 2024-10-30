@@ -9,8 +9,17 @@ import { Coin } from "@/models/coin";
  * @throws Error if the fetch fails or response is invalid
  */
 export async function getCoinDetails(id: string): Promise<Coin> {
+  const baseUrl = process.env.COINGECKO_BASE_URL;
+  const apiKey = process.env.COINGECKO_API_KEY;
+
+  if (!baseUrl || !apiKey) {
+    throw new Error(
+      "Missing environment variables: COINGECKO_BASE_URL or COINGECKO_API_KEY",
+    );
+  }
+
   const url =
-    process.env.COINGECKO_BASE_URL +
+    baseUrl +
     "/coins/" +
     id +
     "?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false";
@@ -19,7 +28,7 @@ export async function getCoinDetails(id: string): Promise<Coin> {
     method: "GET",
     headers: {
       accept: "application/json",
-      "x-cg-demo-api-key": process.env.COINGECKO_API_KEY!,
+      "x-cg-demo-api-key": apiKey,
     },
     next: { revalidate: 60 },
   };
