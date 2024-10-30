@@ -28,7 +28,7 @@ export default function CoinTable({ coinListData }: Props) {
             >
               <td className="whitespace-nowrap cursor-pointer hover:underline">
                 <Link
-                  href={`/coin/${coin.id}`}
+                  href={`/coins/${coin.id}`}
                   className="flex w-full px-2 sm:px-6 py-2 sm:py-4"
                   aria-label={`View details for ${coin.name}`}
                 >
