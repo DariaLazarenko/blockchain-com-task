@@ -43,7 +43,8 @@ export default function CoinTable({ coinListData }: Props) {
                   coin.usd24hChange > 0 ? "text-green-600" : "text-red-600"
                 }`}
               >
-                {coin.usd24hChange.toFixed(2)}%
+                {NumberFormatter.formatToSignificantDecimals(coin.usd24hChange)}
+                %
               </td>
             </tr>
           ))}

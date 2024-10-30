@@ -69,6 +69,7 @@ export default function CoinDetails({ coinId, initialData }: Props) {
               value={data.usd24hHigh}
               prefix="$"
             />
+
             <PriceInfoItem label="24h Low" value={data.usd24hLow} prefix="$" />
           </div>
         </div>
