@@ -7,22 +7,29 @@ The project is deployed on Vercel and you can access it here: [blockchain-com-ta
 ## How to run a project locally
 
 You can do it by following these steps:
+
 1. Clone the project from this GitHub repo.
-2. Create `.env.local` file using `.env.template` as a template by running this command: 
-    ```bash
-    cp .env.template .env.local
-    ```
+2. Create `.env.local` file using `.env.template` as a template by running this command:
+
+   ```bash
+   cp .env.template .env.local
+   ```
+
 3. Make sure that you have a valid CoinGecko API key. If you don't have one, here is a detailed guide on how to create it: [How to create Demo API key](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key)
-4. Insert this API key as a value for `COINGECKO_API_KEY` in created earlier `.env.local` file
+4. Insert this API key as a value for `COINGECKO_API_KEY` in created earlier `.env.local` file.
 5. Run this command to install all necessary dependencies:
-    ```bash
-    npm install
-    ```
+
+   ```bash
+   npm install
+   ```
+
 6. After all the dependencies have successfully installed run this command to build and run this application:
-    ```bash
-    npm run build && npm start
-    ```
-7. Finally, open [http://localhost:3000](http://localhost:3000) with your browser to open the app.
+
+   ```bash
+   npm run build && npm start
+   ```
+
+7. Finally, open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## App overview
 
@@ -40,7 +47,7 @@ Even thought it wasn't stated in the requirements for the task, I decided to add
 
 ### Code structure
 
-I have implemented a simple code structure that organises core components, models, etc. into dedicated folders which suits small projects like this one. 
+I have implemented a simple code structure that organises core components, models, etc. into dedicated folders which suits small projects like this one.
 This structure provides modularity, making the codebase organised and scalable.
 
 ### Design
