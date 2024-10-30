@@ -12,7 +12,7 @@ export default function CoinTable({ coinListData }: Props) {
       className="p-4 pt-0"
       aria-label="Table of availabe cryptocurrencies with name, price and 24hr price percentage change"
     >
-      <table className="min-w-full text-left text-sm bg-white rounded-xl">
+      <table className="min-w-full text-left text-sm bg-white shadow rounded-xl">
         <thead className="border-b">
           <tr>
             <th className="px-2 sm:px-6 py-2 sm:py-4">Name</th>

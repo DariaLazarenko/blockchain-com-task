@@ -57,7 +57,7 @@ export default function CoinDetails({ coinId, initialData }: Props) {
           </div>
         </div>
 
-        <div className="bg-white shadow rounded-lg p-4 sm:p-6">
+        <div className="bg-white shadow rounded-xl p-4 sm:p-6">
           <div className="flex flex-col gap-6">
             <PriceInfoItem
               label="Current Price"
