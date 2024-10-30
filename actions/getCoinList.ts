@@ -50,7 +50,7 @@ export async function getCoinList(): Promise<CoinShort[]> {
 
     return coinListData;
   } catch (error) {
-    console.error("Error fetching crypto data:", error);
+    console.error("Error fetching coin list:", error);
     throw error;
   }
 }
