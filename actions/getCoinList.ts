@@ -1,3 +1,5 @@
+"use server";
+
 import { AVAILABLE_COIN_IDS } from "@/models/availableCoinIds";
 import { CoinShort } from "@/models/coin";
 
@@ -39,12 +41,14 @@ export async function getCoinList(): Promise<CoinShort[]> {
 
     const data: CoinListApiResponse = await response.json();
 
-    return Object.entries(data).map(([id, values]) => ({
+    const coinListData = Object.entries(data).map(([id, values]) => ({
       id,
       name: id.charAt(0).toUpperCase() + id.slice(1),
       usdPrice: values.usd,
       usd24hChange: values.usd_24h_change,
     }));
+
+    return coinListData;
   } catch (error) {
     console.error("Error fetching crypto data:", error);
     throw error;
