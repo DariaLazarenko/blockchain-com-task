@@ -2,16 +2,16 @@
 
 import { useEffect } from "react";
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
+export default function Error({ error }: { error: Error }) {
   useEffect(() => {
     console.error(error);
   }, [error]);
+
+  const handleReload = () => {
+    // I use this instead of reset() and router.refresh() because
+    // these functions do not execute any server-side requests again
+    window.location.reload();
+  };
 
   return (
     <div className="h-full flex flex-col justify-center items-center p-4">
@@ -19,7 +19,7 @@ export default function Error({
         Something went wrong: {error.message}
       </h2>
       <button
-        onClick={() => reset()}
+        onClick={handleReload}
         className="px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition-colors"
       >
         Try again
