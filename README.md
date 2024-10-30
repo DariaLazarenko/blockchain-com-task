@@ -17,19 +17,20 @@ You can do it by following these steps:
 
 3. Make sure that you have a valid CoinGecko API key. If you don't have one, here is a detailed guide on how to create it: [How to create Demo API key](https://support.coingecko.com/hc/en-us/articles/21880397454233-User-Guide-How-to-sign-up-for-CoinGecko-Demo-API-and-generate-an-API-key)
 4. Insert this API key as a value for `COINGECKO_API_KEY` in created earlier `.env.local` file.
-5. Run this command to install all necessary dependencies:
+5. Make sure that you have Node.js and npm installed in order to complete further steps.
+6. Run this command to install all necessary dependencies:
 
    ```bash
    npm install
    ```
 
-6. After all the dependencies have successfully installed run this command to build and run this application:
+7. After all the dependencies have successfully installed run this command to build and run this application:
 
    ```bash
    npm run build && npm start
    ```
 
-7. Finally, open [http://localhost:3000](http://localhost:3000) with your browser.
+8. Finally, open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## App overview
 
@@ -37,17 +38,17 @@ The App has two main pages: static coin list page and dynamic coin details page 
 
 ### Coin list page
 
-For the coin list page, I've used SSR to prefetch the data on the server. The fetch request to CoinGecko is revalidated every 60 seconds to ensure data accuracy.
+For the coin list page, I've used SSR to prefetch the data on the server. The fetch request to CoinGecko is revalidated every 60 seconds to ensure data accuracy. I chose 60 seconds time interval because CoinGecko updates data every minute for demo accounts.
 
 ### Coin details page
 
 For the coin details page, I have also used SSR to prefetch initial data. The page is regenerated on each reload because it is a dynamic route.
 
-Even thought it wasn't stated in the requirements for the task, I decided to add the feature of auto coin data update every 60 seconds. To achieve this, I used a client component for live data updates with `UseEffect` React hook. I think it is quite useful for monitoring coin prices.
+Even thought it wasn't stated in the requirements for the task, I decided to add the feature of auto coin data update every 60 seconds. To achieve this, I used a client component for live data updates with `useEffect` React hook. I think it is quite useful for monitoring coin prices.
 
 ### Code structure
 
-I have implemented a simple code structure that organises core components, models, etc. into dedicated folders which suits small projects like this one.
+I have implemented a simple code structure that organises core components, models, etc. into dedicated folders which suit small projects like this one.
 This structure provides modularity, making the codebase organised and scalable.
 
 ### Design
