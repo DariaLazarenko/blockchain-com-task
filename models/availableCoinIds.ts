@@ -1,4 +1,4 @@
-export const AVAILABLE_CRYPTO_IDS = [
+export const AVAILABLE_COIN_IDS = [
   "bitcoin",
   "ethereum",
   "dogecoin",

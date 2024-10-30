@@ -1,7 +1,7 @@
-import { AVAILABLE_CRYPTO_IDS } from "@/models/availableCryptoIds";
-import { CryptocurrencyShort } from "@/models/cryptocurrency";
+import { AVAILABLE_COIN_IDS } from "@/models/availableCoinIds";
+import { CoinShort } from "@/models/coin";
 
-interface CryptocurrencyListApiResponse {
+interface CoinListApiResponse {
   [key: string]: {
     usd: number;
     usd_24h_change: number;
@@ -11,14 +11,14 @@ interface CryptocurrencyListApiResponse {
 /**
  * Fetches current price and 24-hour price change data for a predefined list of cryptocurrencies
  * from the CoinGecko API.
- * @returns {Promise<CryptocurrencyShort[]>} Promise that resolves to an array of cryptocurrency objects containing ID, name, USD price, and 24-hour USD price change percentage
+ * @returns {Promise<CoinShort[]>} Promise that resolves to an array of cryptocurrency objects containing ID, name, USD price, and 24-hour USD price change percentage
  * @throws Error If the API request fails
  */
-export async function getCryptocurrencyList(): Promise<CryptocurrencyShort[]> {
+export async function getCoinList(): Promise<CoinShort[]> {
   const url =
     process.env.COINGECKO_BASE_URL +
     "/simple/price?ids=" +
-    AVAILABLE_CRYPTO_IDS.join(",") +
+    AVAILABLE_COIN_IDS.join(",") +
     "&vs_currencies=usd&include_24hr_change=true";
 
   const options = {
@@ -37,7 +37,7 @@ export async function getCryptocurrencyList(): Promise<CryptocurrencyShort[]> {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const data: CryptocurrencyListApiResponse = await response.json();
+    const data: CoinListApiResponse = await response.json();
 
     return Object.entries(data).map(([id, values]) => ({
       id,

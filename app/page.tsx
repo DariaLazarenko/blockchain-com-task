@@ -1,16 +1,17 @@
-import { CryptocurrencyShort } from "@/models/cryptocurrency";
+import { CoinShort } from "@/models/coin";
 import EmptyState from "@/components/EmptyState";
-import { getCryptocurrencyList } from "@/services/cryptocurrencyListPageService";
+import { getCoinList } from "@/services/coinListPageService";
 import { NumberFormatter } from "@/utils/numberFormatter";
+import Link from "next/link";
 
-export default async function CryptocurrencyListPage() {
-  const cryptoData = await getCryptocurrencyList();
+export default async function CoinListPage() {
+  const coinListData = await getCoinList();
 
   return (
-    <main className="h-full flex flex-col">
+    <main className="h-full flex flex-col lg:px-36">
       <h3 className="py-4 px-5">Available cryptocurrencies:</h3>
-      {!cryptoData.length && <EmptyState />}
-      {!!cryptoData.length && (
+      {!coinListData.length && <EmptyState />}
+      {!!coinListData.length && (
         <div
           className="p-4 pt-0"
           aria-label="Table of availabe cryptocurrencies with name, price and 24hr price percentage change"
@@ -24,28 +25,30 @@ export default async function CryptocurrencyListPage() {
               </tr>
             </thead>
             <tbody>
-              {cryptoData.map((crypto: CryptocurrencyShort) => (
+              {coinListData.map((coin: CoinShort) => (
                 <tr
-                  key={crypto.id}
-                  className="border-b last:border-b-0 transition duration-300 ease-in-out hover:bg-blue-50 cursor-pointer"
+                  key={coin.id}
+                  className="border-b last:border-b-0 transition duration-300 ease-in-out hover:bg-blue-50"
                 >
-                  <td className="whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4">
-                    {crypto.name}
+                  <td className="whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4 cursor-pointer hover:underline">
+                    <Link
+                      href={`/coins/${coin.id}`}
+                      className="flex w-full"
+                      aria-label={`View details for ${coin.name}`}
+                    >
+                      {coin.name}
+                    </Link>
                   </td>
                   <td className="whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4">
                     $
-                    {NumberFormatter.formatToSignificantDecimals(
-                      crypto.usdPrice,
-                    )}
+                    {NumberFormatter.formatToSignificantDecimals(coin.usdPrice)}
                   </td>
                   <td
                     className={`whitespace-nowrap px-2 sm:px-6 py-2 sm:py-4 ${
-                      crypto.usd24hChange > 0
-                        ? "text-green-500"
-                        : "text-red-500"
+                      coin.usd24hChange > 0 ? "text-green-500" : "text-red-500"
                     }`}
                   >
-                    {crypto.usd24hChange.toFixed(2)}%
+                    {coin.usd24hChange.toFixed(2)}%
                   </td>
                 </tr>
               ))}
