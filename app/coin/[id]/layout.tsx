@@ -10,7 +10,7 @@ export default function CoinDetailsPageLayout({
       <Link
         href={`/`}
         className="flex p-4 underline"
-        aria-label={`Go back to main page`}
+        aria-label="Go back to main page"
       >
         Go Back
       </Link>

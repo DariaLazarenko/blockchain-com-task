@@ -9,7 +9,7 @@ export default function NotFound() {
       <Link
         href={`/`}
         className="flex p-4 underline"
-        aria-label={`Go back to main page`}
+        aria-label="Go back to main page"
       >
         Go to Home Page
       </Link>

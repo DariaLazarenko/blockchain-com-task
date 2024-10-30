@@ -6,7 +6,7 @@ export default function Header() {
       <Link
         href={`/`}
         className="text-black text-lg"
-        aria-label={`Go to main page`}
+        aria-label="Go to main page"
       >
         Blockchain.com
       </Link>
